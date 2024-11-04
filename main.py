@@ -1,16 +1,26 @@
-#Escriba un programa que dibuje el triángulo del tamaño indicado por el usuario de acuerdo al ejemplo:
-#
-#Altura: 5
-#
-# *
-# **
-# ***
-# ****
-# *****
+# Escriba un programa que dibuje el hexágono del tamaño indicado por el usuario de acuerdo al ejemplo:
+# 
+# Lado: 4
+# 
+#    ****
+#   ******
+#  ********
+# **********
+#  ********
+#   ******
+#    ****
 
-# Solicitar al usuario que ingrese la altura del triángulo
-altura = int(input("Altura: "))
+# Solicitar al usuario que ingrese el tamaño del lado del hexágono
+lado = int(input("Lado: "))
 
-# Dibujar el triángulo
-for i in range(1, altura + 1):
-    print('*' * i)
+# Dibujar la parte superior del hexágono
+for i in range(lado):
+    espacios = ' ' * (lado - i - 1)
+    asteriscos = '*' * (2 * i + 4)  # Ajustar el número de asteriscos
+    print(espacios + asteriscos)
+
+# Dibujar la parte inferior del hexágono
+for i in range(lado - 1):
+    espacios = ' ' * (i + 1)
+    asteriscos = '*' * (2 * (lado - i - 1) + 4)  # Ajustar el número de asteriscos
+    print(espacios + asteriscos)
