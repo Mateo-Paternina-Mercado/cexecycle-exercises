@@ -1,27 +1,32 @@
-#Desarolle un programa para estimar el valor de π usando la siguiente suma infinita:
+#Desarrolle un programa que permita trabajar con las potencias fraccionales de dos, es decir:
 #
-#π=4(1−13+15−17+…)
-#La entrada del programa debe ser un número entero n
-# que indique cuántos términos de la suma se utilizará.
+#12,14,18,116,132,164,…
+#en forma decimal:
 #
-#n: 3
-#3.466666666666667
-#n: 1000
-#3.140592653839794
+#0.5,0.25,0.125,0.0625,0.03125,0.015625,…
+#El programa debe mostrar tres columnas que contengan la siguiente información:
+#
+#Potencia  Fraccion  Suma
+#1         0.5       0.5
+#2         0.25      0.75
+#3         0.125     0.875
+#4         0.0625    0.9375
+#...       ...       ...
+#El programa debe terminar cuando la fracción decimal sea menor o igual a 0.000001.
 
-# Solicitar al usuario que ingrese el número de términos
-n = int(input("n: "))
+# Inicializar variables
+potencia = 1
+fraccion = 0.5
+suma_acumulada = 0.0
 
-# Inicializar la suma
-suma = 0.0
+# Imprimir encabezado
+print(f"{'Potencia':<10} {'Fraccion':<10} {'Suma':<10}")
 
-# Calcular la suma utilizando la fórmula
-for i in range(n):
-    termino = (-1)**i / (2 * i + 1)  # Fórmula para cada término
-    suma += termino
-
-# Calcular el valor estimado de π
-pi_estimado = 4 * suma
-
-# Mostrar el resultado
-print(pi_estimado)
+# Calcular potencias fraccionales de dos
+while fraccion > 0.000001:
+    suma_acumulada += fraccion
+    print(f"{potencia:<10} {fraccion:<10.6f} {suma_acumulada:<10.6f}")
+    
+    # Incrementar la potencia y calcular la siguiente fracción
+    potencia += 1
+    fraccion /= 2  # Cada fracción es la mitad de la anterior
