@@ -1,20 +1,10 @@
-#Escriba un programa que muestre la tabla de multiplicar del 1 al 10 del número ingresado por el usuario:
-#Ingrese un numero: 9
-#9 x 1 = 9
-#9 x 2 = 18
-#9 x 3 = 27
-#9 x 4 = 36
-#9 x 5 = 45
-#9 x 6 = 54
-#9 x 7 = 63
-#9 x 8 = 72
-#9 x 9 = 81
-#9 x 10 = 90
+#Escriba un programa que genere todas las potencias de 2, desde la 0-ésima hasta la ingresada por el usuario:
+#Ingrese num: 10
+#1 2 4 8 16 32 64 128 256 512 1024
 
 # Solicitar al usuario que ingrese un número
-numero = int(input("Enter a number: "))
+numero = int(input("Enter number: "))
 
-# Mostrar la tabla de multiplicar del número ingresado
-for i in range(1, 11):
-    resultado = numero * i
-    print(f"{numero} x {i} = {resultado}")
+# Generar y mostrar las potencias de 2
+potencias = [2 ** i for i in range(numero + 1)]
+print(" ".join(map(str, potencias)))
