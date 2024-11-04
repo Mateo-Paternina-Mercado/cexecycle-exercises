@@ -1,14 +1,16 @@
-#Escriba un programa que pida al usuario ingresar la altura y el ancho de un rectángulo y lo dibuje utilizando asteriscos:
-#Altura: 3
-#Ancho: 5
-# *****
-# *****
+#Escriba un programa que dibuje el triángulo del tamaño indicado por el usuario de acuerdo al ejemplo:
+#
+#Altura: 5
+#
+# *
+# **
+# ***
+# ****
 # *****
 
-# Solicitar al usuario que ingrese la altura y el ancho del rectángulo
+# Solicitar al usuario que ingrese la altura del triángulo
 altura = int(input("Altura: "))
-ancho = int(input("Ancho: "))
 
-# Dibujar el rectángulo
-for _ in range(altura):
-    print('*' * ancho)
+# Dibujar el triángulo
+for i in range(1, altura + 1):
+    print('*' * i)
