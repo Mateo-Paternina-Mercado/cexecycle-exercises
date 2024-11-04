@@ -1,34 +1,66 @@
-#El número de Euler, e ≈ 2,71828, puede ser representado como la siguiente suma infinita:
+#La secuencia de Collatz de un número entero se construye de la siguiente forma:
 #
-#e=10!+11!+12!+13!+14!+…
-#Desarrolle un programa que entregue un valor aproximado de e, calculando esta suma hasta que la diferencia entre dos sumandos consecutivos sea menor que 0,0001.
+#si el número es par, se lo divide por dos;
+#si es impar, se le multiplica tres y se le suma uno;
+#la sucesión termina al llegar a uno.
+#La conjetura de Collatz afirma que, al partir desde cualquier número, la secuencia siempre llegará a 1. A pesar de ser una afirmación a simple vista muy simple, no se ha podido demostrar si es cierta o no.
 #
-#Recuerde que el factorial n! es el producto de los números de 1 a n.
+#Usando computadores, se ha verificado que la sucesión efectivamente llega a 1 partiendo desde cualquier número natural menor que 258
+#.
+#
+#Desarrolle un programa que entregue la secuencia de Collatz de un número entero:
+#
+#n: 18
+#18 9 28 14 7 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1
+#n: 19
+#19 58 29 88 44 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1
+#n: 20
+#20 10 5 16 8 4 2 1
+#Desarrolle un programa que grafique los largos de las secuencias de Collatz de los números enteros positivos menores que el ingresado por el usuario:
+#
+#n: 20
+#1 *
+#2 **
+#3 ********
+#4 ***
+#5 ******
+#6 *********
+#7 *****************
+#8 ****
+#9 ********************
+#10 *******
+#11 ***************
+#12 **********
+#13 **********
+#14 ******************
+#15 ******************
+#16 *****
+#17 *************
+#18 *********************
+#19 *********************
+#20 ********
 
-# Función para calcular el factorial de un número de manera iterativa
-def factorial(n):
-    resultado = 1
-    for i in range(2, n + 1):
-        resultado *= i
-    return resultado
+# Función para calcular la secuencia de Collatz
+def collatz_sequence(n):
+    secuencia = []
+    while n != 1:
+        secuencia.append(n)
+        if n % 2 == 0:
+            n //= 2
+        else:
+            n = 3 * n + 1
+    secuencia.append(1)  # Agregar el último término (1)
+    return secuencia
 
-# Inicializar variables
-n = 10  # Comenzar desde 10!
-suma_e = 0.0
-ultimo_termino = 1.0  # Para el primer término (1/10!)
-diferencia = float('inf')  # Inicializar con infinito
+# Solicitar al usuario que ingrese un número
+n = int(input("n: "))
 
-# Calcular la suma de 1/n! hasta que la diferencia sea menor que 0.0001
-while diferencia >= 0.0001:
-    nuevo_termino = 1 / factorial(n)
-    suma_e += nuevo_termino
-    
-    # Calcular la diferencia entre términos
-    if n > 10:  # Para evitar la diferencia inicial
-        diferencia = abs(nuevo_termino - ultimo_termino)
-    
-    ultimo_termino = nuevo_termino
-    n += 1  # Incrementar n para calcular el siguiente factorial
+# Imprimir la secuencia de Collatz para el número ingresado
+secuencia = collatz_sequence(n)
+print(" ".join(map(str, secuencia)))
 
-# Mostrar el resultado aproximado de e
-print(f"Valor aproximado de e: {suma_e + 1}")  # Agregar el 1 por el término 1/0!
+# Graficar los largos de las secuencias de Collatz para los números menores que n
+print("\nLongitudes de las secuencias de Collatz:")
+for i in range(1, n + 1):
+    longitud = len(collatz_sequence(i))
+    print(f"{i} {'*' * longitud}")
