@@ -1,26 +1,27 @@
-# Escriba un programa que dibuje el hexágono del tamaño indicado por el usuario de acuerdo al ejemplo:
-# 
-# Lado: 4
-# 
-#    ****
-#   ******
-#  ********
-# **********
-#  ********
-#   ******
-#    ****
+#Desarolle un programa para estimar el valor de π usando la siguiente suma infinita:
+#
+#π=4(1−13+15−17+…)
+#La entrada del programa debe ser un número entero n
+# que indique cuántos términos de la suma se utilizará.
+#
+#n: 3
+#3.466666666666667
+#n: 1000
+#3.140592653839794
 
-# Solicitar al usuario que ingrese el tamaño del lado del hexágono
-lado = int(input("Lado: "))
+# Solicitar al usuario que ingrese el número de términos
+n = int(input("n: "))
 
-# Dibujar la parte superior del hexágono
-for i in range(lado):
-    espacios = ' ' * (lado - i - 1)
-    asteriscos = '*' * (2 * i + 4)  # Ajustar el número de asteriscos
-    print(espacios + asteriscos)
+# Inicializar la suma
+suma = 0.0
 
-# Dibujar la parte inferior del hexágono
-for i in range(lado - 1):
-    espacios = ' ' * (i + 1)
-    asteriscos = '*' * (2 * (lado - i - 1) + 4)  # Ajustar el número de asteriscos
-    print(espacios + asteriscos)
+# Calcular la suma utilizando la fórmula
+for i in range(n):
+    termino = (-1)**i / (2 * i + 1)  # Fórmula para cada término
+    suma += termino
+
+# Calcular el valor estimado de π
+pi_estimado = 4 * suma
+
+# Mostrar el resultado
+print(pi_estimado)
